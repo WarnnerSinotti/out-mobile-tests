@@ -1,6 +1,6 @@
-# 🎉 Bem-vindo ao Projeto de Testes WebdriverIO QA! 🚀
+# out-e2e-webDriverIO
 
-Este projeto foi desenvolvido para facilitar e guiar novos QAs no universo do framework [**WebdriverIO**](https://webdriver.io/), trazendo práticas de automação de testes E2E (WEB e MOBILE) e API para validar a qualidade e a performance das aplicações.
+Projeto desenvolvido para testes web e mobile com uso do framework [**WebdriverIO**](https://webdriver.io/), trazendo práticas de automação de testes E2E (WEB e MOBILE) e API para validar a qualidade e a performance das aplicações.
 
 ---
 
