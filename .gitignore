@@ -5,18 +5,10 @@ node_modules
 .env
 .env.local
 
-# Playwright
-playwright-report/
+# WebdriverIO
+allure-results/
+allure-report/
 test-results/
-blob-report/
-playwright/.cache/
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
 
 # OS
 .DS_Store
-Thumbs.db
