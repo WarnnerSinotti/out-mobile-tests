@@ -161,6 +161,18 @@ Este projeto adota práticas avançadas e automações para simplificar o dia a 
 -   **Relatórios de Testes (Allure Report)**: relatórios detalhados e prontos para análise.
 -   **Modularidade**: testes, fixtures e comandos WebdriverIO são estruturados para fácil acesso e reutilização.
 
+## Prefixos de Commit
+
+| Prefixo  | Significado                                      |
+| -------- | ------------------------------------------------ |
+| feat     | Nova funcionalidade de teste                     |
+| fix      | Correção de quebra de id ou test-id              |
+| docs     | Alterações em documentação                       |
+| config   | Alterações na configuração do Playwright         |
+| refactor | Refatoração de código, sem nova funcionalidade   |
+
+---
+
 ## 📜 Licença
 
 -   Este projeto é público, com o objetivo de compartilhar conhecimento e promover estudos.

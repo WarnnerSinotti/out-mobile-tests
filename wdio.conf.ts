@@ -1,4 +1,6 @@
+import dotenv from "dotenv";
 import minimist from "minimist";
+dotenv.config();
 
 const argv = minimist(process.argv.slice(2));
 const isMobile = argv.mobile || false;

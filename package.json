@@ -41,6 +41,9 @@
         "reporter:allure": "allure generate allure-results --clean -o allure-report && allure open allure-report"
     },
     "dependencies": {
+        "@commitlint/cli": "^19.8.1",
+        "@commitlint/config-conventional": "^19.8.1",
+        "@commitlint/types": "^19.8.1",
         "@typescript-eslint/eslint-plugin": "^6.13.2",
         "@typescript-eslint/parser": "^6.13.2",
         "@typescript-eslint/types": "^6.13.2",
@@ -48,6 +51,7 @@
         "eslint-plugin-filenames": "^1.3.2",
         "eslint-plugin-sonarjs": "^0.23.0",
         "eslint-plugin-wdio": "^9.0.8",
-        "minimist": "^1.2.8"
+        "minimist": "^1.2.8",
+        "dotenv": "^16.4.5"
     }
 }
