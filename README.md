@@ -132,11 +132,20 @@ O emulador padrão costuma aparecer como `emulator-5554` (conforme `wdio.conf.ts
 
 Coloque o arquivo `.apk` do aplicativo em `android/app.apk` (ou ajuste o caminho em `wdio.conf.ts`).
 
+**Para CI (GitHub Actions):** Adicione o APK ao repositório em `android/app.apk` ou configure o secret `APK_URL` nas configurações do repositório com uma URL para download do APK.
+
 #### 7. Executar os testes mobile
 
 ```bash
 npm run test:mobile
 ```
+
+### CI/CD (GitHub Actions)
+
+O projeto inclui workflow em `.github/workflows/mobile-tests.yml` que executa os testes mobile no GitHub Actions com emulador Android.
+
+- **Disparo:** `push` e `pull_request` na branch `main`, ou manualmente (`workflow_dispatch`)
+- **Requisitos:** APK em `android/app.apk` ou secret `APK_URL` configurado
 
 #### Requisitos recomendados
 
