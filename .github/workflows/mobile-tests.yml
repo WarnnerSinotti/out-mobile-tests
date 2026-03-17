@@ -36,10 +36,13 @@ jobs:
         run: npx appium driver install uiautomator2
 
       - name: Baixar APK (opcional)
-        if: secrets.APK_URL != ''
+        env:
+          APK_URL: ${{ secrets.APK_URL }}
         run: |
-          mkdir -p android
-          curl -L -o android/app.apk "${{ secrets.APK_URL }}"
+          if [ -n "$APK_URL" ]; then
+            mkdir -p android
+            curl -L -o android/app.apk "$APK_URL"
+          fi
 
       - name: Verificar APK
         run: |
