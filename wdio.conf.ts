@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import Allure from "@wdio/allure-reporter";
 import minimist from "minimist";
 dotenv.config();
 
@@ -57,14 +58,28 @@ export const config: WebdriverIO.Config = {
       "allure",
       {
         // Reporter Allure para gerar os resultados em um formato específico
-        outputDir: "allure-results", // Diretório para armazenar os resultados do Allure
-        disableWebdriverStepsReporting: true, // Desabilita a gravação dos passos do WebDriver no Allure
-        disableWebdriverScreenshotsReporting: true, // Desabilita a gravação das capturas de tela no Allure
+        outputDir: "allure-results",
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false, // Habilita screenshots no relatório
       },
     ],
   ],
   mochaOpts: {
     ui: "bdd",
     timeout: 60000,
+  },
+  afterTest: async (_test, _context, result) => {
+    if (result.error && isMobile) {
+      try {
+        const screenshot = await browser.takeScreenshot();
+        Allure.addAttachment(
+          "Screenshot on failure",
+          Buffer.from(screenshot, "base64"),
+          "image/png",
+        );
+      } catch {
+        // Ignora se a sessão já foi encerrada
+      }
+    }
   },
 };
