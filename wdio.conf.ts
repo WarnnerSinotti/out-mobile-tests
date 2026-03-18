@@ -1,7 +1,15 @@
-import dotenv from "dotenv";
 import Allure from "@wdio/allure-reporter";
+import dotenv from "dotenv";
 import minimist from "minimist";
+import { homedir } from "os";
+import { resolve } from "path";
 dotenv.config();
+
+// Appium precisa de ANDROID_HOME - usa caminho padrão se não estiver definido
+const defaultAndroidSdk = resolve(homedir(), "Android", "Sdk");
+if (!process.env.ANDROID_HOME && !process.env.ANDROID_SDK_ROOT) {
+  process.env.ANDROID_HOME = defaultAndroidSdk;
+}
 
 const argv = minimist(process.argv.slice(2));
 const isMobile = argv.mobile || false;
@@ -17,7 +25,8 @@ export const config: WebdriverIO.Config = {
     // Adicione aqui padrões de arquivos que você deseja excluir dos testes
   ],
   maxInstances: 10,
-  port: isMobile ? 4723 : undefined, // Define a porta apenas para testes móveis
+  hostname: isMobile ? "127.0.0.1" : "localhost", // IPv4 explícito evita ECONNREFUSED com Node 17+
+  port: isMobile ? 4723 : undefined,
   capabilities: [
     // Se for um teste mobile, use a capability mobile, caso contrário use a capability web
     ...(isMobile
@@ -27,9 +36,10 @@ export const config: WebdriverIO.Config = {
             "appium:deviceName": "emulator-5554", // Nome do dispositivo ou do emulador
             "appium:platformVersion":
               process.env.ANDROID_PLATFORM_VERSION || "14", // CI usa API 34 (Android 14); local: defina no .env se diferente
-            "appium:app": "android/app.apk", // Caminho para o app no Android; para iOS, use o arquivo .app ou .ipa
-            "appium:automationName": "UiAutomator2", // ou 'XCUITest' para iOS
-            "appium:noReset": true, // Define se o app deve ser reinstalado em cada execução
+            "appium:app": "android/app.apk",
+            "appium:automationName": "UiAutomator2",
+            "appium:noReset": true,
+            "appium:autoGrantPermissions": true, // Concede permissões (ex: notificações) automaticamente
           },
         ]
       : [
@@ -49,7 +59,13 @@ export const config: WebdriverIO.Config = {
   connectionRetryCount: 3,
   services: [
     "visual",
-    ["appium", { command: "appium" }], // Configuração caso o Appium esteja instalado globalmente
+    [
+      "appium",
+      {
+        command: "appium",
+        args: { address: "127.0.0.1" }, // Appium escuta em IPv4
+      },
+    ],
   ],
   framework: "mocha",
   reporters: [

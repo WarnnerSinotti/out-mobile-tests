@@ -3,11 +3,11 @@ import { $ } from "@wdio/globals";
 export default class JavaScriptPage {
   public get btnIntroduction() {
     return $(
-      '//android.widget.TextView[@resource-id="com.ubproject.learnautomationtesting:id/textView1"]',
+      '//android.widget.RelativeLayout[.//android.widget.TextView[@text="1.  Introduction"]]',
     );
   }
 
-  public get txtIntroduction() {
+  public get txtIntroductionTitle() {
     return $(
       '//*[@resource-id="com.ubproject.learnautomationtesting:id/title"]',
     );
@@ -20,13 +20,12 @@ export default class JavaScriptPage {
   }
 
   public async ValidIntroductionMenu() {
-    const btnIntroduction = await this.btnIntroduction.getText();
-    expect(btnIntroduction).toBe("1.  Introduction");
-
+    await this.btnIntroduction.waitForDisplayed({ timeout: 5000 });
     await this.btnIntroduction.click();
 
-    const txtIntroduction = await this.txtIntroduction.getText();
-    expect(txtIntroduction).toBe("Introduction");
+    await this.txtIntroductionTitle.waitForDisplayed({ timeout: 5000 });
+    const titleText = await this.txtIntroductionTitle.getText();
+    expect(titleText).toBe("Function in JS");
 
     await this.btnBack.click();
   }

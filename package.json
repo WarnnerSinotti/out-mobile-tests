@@ -14,7 +14,7 @@
         "@wdio/visual-service": "^6.2.1",
         "allure-commandline": "^2.38.0",
         "appium": "^2.12.1",
-        "appium-uiautomator2-driver": "^3.8.1",
+        "appium-uiautomator2-driver": "^3.10.0",
         "eslint": "^8.31.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-import-resolver-typescript": "4.3.2",

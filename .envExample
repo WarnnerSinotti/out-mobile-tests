@@ -1,2 +1,6 @@
 # E2E
 BASE_URL=https://the-internet.herokuapp.com
+
+# Mobile (opcional)
+# ANDROID_PLATFORM_VERSION=15.0
+# ANDROID_HOME=$HOME/Android/Sdk   # só se estiver em outro caminho
