@@ -1,5 +1,5 @@
 {
-    "name": "out-e2e-playwright",
+    "name": "out-mobile-tests",
     "version": "1.0.0",
     "description": "Projeto de testes com WebdriverIO",
     "type": "module",
