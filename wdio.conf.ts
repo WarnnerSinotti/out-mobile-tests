@@ -24,7 +24,8 @@ export const config: WebdriverIO.Config = {
           {
             platformName: "Android", // ou 'iOS' se estiver testando no iOS
             "appium:deviceName": "emulator-5554", // Nome do dispositivo ou do emulador
-            "appium:platformVersion": "15.0", // Versão do SO no dispositivo
+            "appium:platformVersion":
+              process.env.ANDROID_PLATFORM_VERSION || "14", // CI usa API 34 (Android 14); local: defina no .env se diferente
             "appium:app": "android/app.apk", // Caminho para o app no Android; para iOS, use o arquivo .app ou .ipa
             "appium:automationName": "UiAutomator2", // ou 'XCUITest' para iOS
             "appium:noReset": true, // Define se o app deve ser reinstalado em cada execução

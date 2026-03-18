@@ -58,6 +58,8 @@ jobs:
           profile: pixel_7_pro
           script: npm run test:mobile
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+        env:
+          ANDROID_PLATFORM_VERSION: "14"
 
       - name: Upload Allure results
         if: always()
