@@ -33,7 +33,7 @@ jobs:
         run: npm ci || npm install
 
       - name: Instalar driver UiAutomator2
-        run: npx appium driver install uiautomator2
+        run: npx appium driver list --installed 2>/dev/null | grep -q uiautomator2 || npx appium driver install uiautomator2
 
       - name: Baixar APK (opcional)
         env:
