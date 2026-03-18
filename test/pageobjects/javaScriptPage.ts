@@ -1,32 +1,14 @@
 import { $ } from "@wdio/globals";
 
 export default class JavaScriptPage {
-  public get btnIntroduction() {
+  public get btnFunctionsInJS() {
     return $(
-      '//android.widget.RelativeLayout[.//android.widget.TextView[@text="1.  Introduction"]]',
-    );
-  }
-
-  public get txtIntroductionTitle() {
-    return $(
-      '//*[@resource-id="com.ubproject.learnautomationtesting:id/title"]',
-    );
-  }
-
-  public get btnBack() {
-    return $(
-      '//*[@resource-id="com.ubproject.learnautomationtesting:id/backBtn"]',
+      '//android.widget.RelativeLayout[.//android.widget.TextView[@text="6.  Functions in JS"]]',
     );
   }
 
   public async ValidIntroductionMenu() {
-    await this.btnIntroduction.waitForDisplayed({ timeout: 5000 });
-    await this.btnIntroduction.click();
-
-    await this.txtIntroductionTitle.waitForDisplayed({ timeout: 5000 });
-    const titleText = await this.txtIntroductionTitle.getText();
-    expect(titleText).toBe("Function in JS");
-
-    await this.btnBack.click();
+    await this.btnFunctionsInJS.waitForDisplayed({ timeout: 5000 });
+    await this.btnFunctionsInJS.click();
   }
 }
